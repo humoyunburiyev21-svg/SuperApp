@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+google-generativeai
+qrcode
+Pillow
+python-multipart
+requests
+aiohttp
