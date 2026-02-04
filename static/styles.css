@@ -1,177 +1,115 @@
-/* --- SCROLLBAR (O'NG TOMON) DIZAYNI --- */
-        
-        /* 1. Umumiy kengligi (Juda ingichka qilamiz) */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
+/* --- SCROLLBAR --- */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-color); }
+::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
-        /* 2. Orqa yo'lakchasi (Sayt foni bilan bir xil rangda) */
-        ::-webkit-scrollbar-track {
-            background: var(--bg-color); 
-        }
+/* --- RANG VA FON SOZLAMALARI --- */
+:root {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-main: #ffffff;
+    --text-muted: #94a3b8;
+    --accent: #3b82f6;
+    --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+}
 
-        /* 3. Harakatlanuvchi tayoqcha (To'q kulrang) */
-        ::-webkit-scrollbar-thumb {
-            background: #334155; 
-            border-radius: 10px; /* Yumaloq burchaklar */
-        }
+.light-mode {
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+}
 
-        /* 4. Sichqoncha borganda rangi o'zgaradi (Effekt) */
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--accent); /* Bizning moviy rang */
-        }
-        /* --- RANG VA FON SOZLAMALARI --- */
-        :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #ffffff;
-            --text-muted: #94a3b8;
-            --accent: #3b82f6;
-            --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-        }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; transition: all 0.3s ease; }
+body { background-color: var(--bg-color); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
 
-        /* Light Mode uchun ham Hero qismi qorong'u qolaveradi (Runway stili) */
-        .light-mode {
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-        }
+/* --- NAVBAR --- */
+nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 15px 5%; width: 100%; position: fixed; top: 0; z-index: 1000;
+    background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.light-mode nav { background: rgba(255, 255, 255, 0.8); border-bottom: 1px solid rgba(0,0,0,0.1); }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; transition: all 0.3s ease; }
-        
-        body { background-color: var(--bg-color); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
+.logo { font-size: 24px; font-weight: 800; color: white; cursor: pointer; display: flex; align-items: center; gap: 10px; }
+.light-mode .logo { color: #3b82f6; }
 
-        /* --- 1. NAVBAR (Tuzatilgan) --- */
-        nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 5%; width: 100%; position: fixed; top: 0; z-index: 1000;
-            background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(15px); /* Xira oyna effekti kuchaytirildi */
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        .light-mode nav { background: rgba(255, 255, 255, 0.8); border-bottom: 1px solid rgba(0,0,0,0.1); }
+.nav-links { display: flex; align-items: center; gap: 15px; }
+.nav-btn { background: transparent; border: 1px solid rgba(255,255,255,0.3); padding: 8px 15px; border-radius: 20px; color: white; font-size: 14px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
+.nav-btn:hover { background: rgba(255,255,255,0.1); border-color: white; }
+.light-mode .nav-btn { color: #1e293b; border-color: rgba(0,0,0,0.2); }
+.light-mode .nav-btn:hover { background: rgba(0,0,0,0.05); border-color: #3b82f6; }
 
-        .logo { font-size: 24px; font-weight: 800; color: white; cursor: pointer; display: flex; align-items: center; gap: 10px; }
-        .light-mode .logo { color: #3b82f6; }
-        
-        /* Tugmalar konteyneri (Eng muhim joyi) */
-        .nav-links { 
-            display: flex; 
-            align-items: center; 
-            gap: 15px; /* Tugmalar orasidagi masofa */
-        }
-        
-        .nav-btn { 
-            background: transparent; border: 1px solid rgba(255,255,255,0.3); 
-            padding: 8px 15px; border-radius: 20px; color: white; font-size: 14px; 
-            cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 8px;
-        }
-        .nav-btn:hover { background: rgba(255,255,255,0.1); border-color: white; }
-        .light-mode .nav-btn { color: #1e293b; border-color: rgba(0,0,0,0.2); }
-        .light-mode .nav-btn:hover { background: rgba(0,0,0,0.05); border-color: #3b82f6; }
+.theme-toggle { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; cursor: pointer; color: white; transition: 0.3s; }
+.theme-toggle:hover { background: rgba(255,255,255,0.2); transform: rotate(15deg); }
+.light-mode .theme-toggle { background: white; border-color: rgba(0,0,0,0.1); color: #f59e0b; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 
-        .theme-toggle { 
-            width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
-            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); 
-            border-radius: 50%; cursor: pointer; color: white; transition: 0.3s;
-        }
-        .theme-toggle:hover { background: rgba(255,255,255,0.2); transform: rotate(15deg); }
-        .light-mode .theme-toggle { background: white; border-color: rgba(0,0,0,0.1); color: #f59e0b; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        /* --- 2. HERO SECTION (RUNWAY STYLE) --- */
-        .hero-container {
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            text-align: center; 
-            height: 85vh; /* Deyarli to'liq ekran */
-            width: 100%;
-            position: relative;
-            
-            /* ORQA FON RASMI (Shu yerni o'zgartirishingiz mumkin) */
-            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)), 
-                        url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop'); 
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Parallax effekt */
-            
-            border-bottom-left-radius: 50px;
-            border-bottom-right-radius: 50px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            margin-bottom: 50px;
-        }
+/* --- HERO SECTION --- */
+.hero-container {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; height: 85vh; width: 100%; position: relative;
+    background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop');
+    background-size: cover; background-position: center; background-attachment: fixed;
+    border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5); margin-bottom: 50px;
+}
 
-        .hero-title { 
-            font-size: 4.5rem; font-weight: 800; margin-bottom: 20px; line-height: 1.1; color: white;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-        .hero-title span { 
-            background: linear-gradient(to right, #4ade80, #3b82f6); 
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
+.hero-title { font-size: 4.5rem; font-weight: 800; margin-bottom: 20px; line-height: 1.1; color: white; text-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.hero-title span { background: linear-gradient(to right, #4ade80, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.cursor { color: var(--accent); animation: blink 1s infinite; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.hero-subtitle { font-size: 1.4rem; color: rgba(255,255,255,0.8); max-width: 700px; margin-bottom: 40px; font-weight: 300; }
+.cta-button { padding: 15px 40px; background: white; color: black; font-weight: bold; border-radius: 30px; text-decoration: none; font-size: 18px; transition: 0.3s; box-shadow: 0 0 20px rgba(255,255,255,0.3); }
+.cta-button:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(255,255,255,0.5); }
 
-        /* Yozuv kursor effekti */
-        .cursor {
-            color: var(--accent);
-            animation: blink 1s infinite;
-        }
-        @keyframes blink { 
-            0%, 100% { opacity: 1; } 
-            50% { opacity: 0; } 
-        }
-        .hero-subtitle { 
-            font-size: 1.4rem; color: rgba(255,255,255,0.8); max-width: 700px; margin-bottom: 40px; font-weight: 300;
-        }
+/* --- TOOLS GRID --- */
+.tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; padding: 0 5% 50px; max-width: 1200px; margin: 0 auto; width: 100%; margin-top: -80px; position: relative; z-index: 10; }
+.tool-card { background: var(--card-bg); padding: 30px; border-radius: 20px; text-align: left; cursor: pointer; border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(20px); }
+.light-mode .tool-card { border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+.tool-card:hover { transform: translateY(-10px); border-color: var(--accent); }
+.tool-icon { font-size: 40px; margin-bottom: 20px; color: var(--accent); background: rgba(59, 130, 246, 0.1); width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; border-radius: 15px; }
 
-        /* "Boshlash" tugmasi (Runway dagi "Get Started" kabi) */
-        .cta-button {
-            padding: 15px 40px; background: white; color: black; font-weight: bold; border-radius: 30px; 
-            text-decoration: none; font-size: 18px; transition: 0.3s; box-shadow: 0 0 20px rgba(255,255,255,0.3);
-        }
-        .cta-button:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(255,255,255,0.5); }
+/* --- WORKSPACE & MODAL --- */
+.workspace { display: none; padding: 120px 5% 50px; max-width: 1000px; margin: 0 auto; width: 100%; animation: slideUp 0.4s; }
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.back-btn { margin-bottom: 20px; display: inline-flex; align-items: center; gap: 10px; color: var(--text-muted); cursor: pointer; font-size: 14px; }
+.app-card { background: var(--card-bg); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); }
+input, select { width: 100%; padding: 15px; background: var(--bg-color); border: 1px solid var(--text-muted); color: var(--text-main); border-radius: 10px; margin-bottom: 15px; outline: none; }
+.btn-action { width: 100%; padding: 15px; background: var(--gradient); border: none; color: white; border-radius: 10px; font-weight: bold; cursor: pointer; }
 
-        /* --- 3. TOOLS GRID --- */
-        .tools-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px; padding: 0 5% 50px; max-width: 1200px; margin: 0 auto; width: 100%;
-            margin-top: -80px; /* Kartalar rasmning ustiga chiqib turadi */
-            position: relative; z-index: 10;
-        }
+/* Modal */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 2000; }
+.modal-content { background: var(--card-bg); padding: 40px; border-radius: 20px; max-width: 500px; width: 90%; text-align: center; position: relative; }
+.close-modal { position: absolute; top: 20px; right: 20px; font-size: 24px; cursor: pointer; color: var(--text-muted); }
 
-        .tool-card {
-            background: var(--card-bg); padding: 30px; border-radius: 20px;
-            text-align: left; cursor: pointer; border: 1px solid rgba(255,255,255,0.05);
-            backdrop-filter: blur(20px); /* Glassmorphism */
-        }
-        .light-mode .tool-card { border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .tool-card:hover { transform: translateY(-10px); border-color: var(--accent); }
-
-        .tool-icon {
-            font-size: 40px; margin-bottom: 20px; color: var(--accent);
-            background: rgba(59, 130, 246, 0.1); width: 70px; height: 70px;
-            display: flex; align-items: center; justify-content: center; border-radius: 15px;
-        }
-        
-        /* Qolgan stillar (Workspace, Modal) o'zgarishsiz qoladi... */
-        .workspace { display: none; padding: 120px 5% 50px; max-width: 1000px; margin: 0 auto; width: 100%; animation: slideUp 0.4s; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .back-btn { margin-bottom: 20px; display: inline-flex; align-items: center; gap: 10px; color: var(--text-muted); cursor: pointer; font-size: 14px; }
-        .app-card { background: var(--card-bg); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); }
-        input, select { width: 100%; padding: 15px; background: var(--bg-color); border: 1px solid var(--text-muted); color: var(--text-main); border-radius: 10px; margin-bottom: 15px; outline: none; }
-        .btn-action { width: 100%; padding: 15px; background: var(--gradient); border: none; color: white; border-radius: 10px; font-weight: bold; cursor: pointer; }
-        
-        /* Modal Stili */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 2000; }
-        .modal-content { background: var(--card-bg); padding: 40px; border-radius: 20px; max-width: 500px; width: 90%; text-align: center; position: relative; }
-        .close-modal { position: absolute; top: 20px; right: 20px; font-size: 24px; cursor: pointer; color: var(--text-muted); }
-/* Telefonlar uchun maxsus tuzatish */
+/* --- TELEFON MOSLASHUVI --- */
 @media (max-width: 768px) {
-    header {
-        padding: 10px;
-    }
-
+    header { padding: 10px; }
+    
     #theme-toggle {
         display: block !important;
         position: absolute;
-        top: 15px;
-        right: 60px;
+        top: 15px; right: 60px;
         z-index: 1001;
     }
+
+    #mobile-controls {
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        bottom: 20px; left: 20px; right: 20px;
+        z-index: 1000;
+    }
+
+    .control-btn {
+        background: rgba(255, 255, 255, 0.2); border: 2px solid white;
+        color: white; font-size: 24px; padding: 15px 20px;
+        border-radius: 50%; touch-action: manipulation; user-select: none;
+    }
+
+    .control-btn:active { background: rgba(255, 255, 255, 0.5); }
+    .fire-btn { background: rgba(255, 0, 0, 0.3); border-color: red; font-size: 20px; border-radius: 20px; }
 }
