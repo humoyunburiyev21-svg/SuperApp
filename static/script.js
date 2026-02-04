@@ -176,8 +176,8 @@
             keySound.volume = 0.5; // Ovoz balandligi (0.0 dan 1.0 gacha)
 
             const part1 = "Kelajakni ";
-            const part2 = "Kod"; 
-            const part3 = " Bilan Yarating";
+            const part2 = "kod"; 
+            const part3 = " bilan yarating";
             
             let i = 0;
             
