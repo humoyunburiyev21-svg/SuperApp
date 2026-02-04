@@ -13,7 +13,7 @@ app = FastAPI()
 
 # ---------------------------------------------------------
 # API KALIT (Xavfsizlik uchun .env fayl ishlatsangiz maqsadga muvofiq bo'ladi)
-GOOGLE_API_KEY = "AIzaSyBMPlpB3m3fkG5Um2LWiObBkd55e-YEmo8"
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 # ---------------------------------------------------------
 
 # Gemini sozlamalari
