@@ -113,3 +113,28 @@ input, select { width: 100%; padding: 15px; background: var(--bg-color); border:
     .control-btn:active { background: rgba(255, 255, 255, 0.5); }
     .fire-btn { background: rgba(255, 0, 0, 0.3); border-color: red; font-size: 20px; border-radius: 20px; }
 }
+  .robot-container {
+    position: fixed;
+    
+    /* O'ZGARTIRILDI: Yanada burchakka tiqish uchun kattaroq minus beramiz */
+    bottom: -130px;   
+    right: -130px;    
+    
+    /* O'lcham o'zgarishsiz qoladi */
+    width: 450px;
+    height: 450px;
+    
+    z-index: 9999;
+    pointer-events: none;
+    background: transparent;
+  }
+
+  /* Mobil versiya uchun ham sal moslab qo'yamiz */
+  @media (max-width: 768px) {
+    .robot-container {
+      width: 200px;
+      height: 200px;
+      bottom: -40px;  /* Buni ham sal pastlatdik */
+      right: -40px;
+    }
+  }
