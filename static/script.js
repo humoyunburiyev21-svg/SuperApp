@@ -519,3 +519,34 @@
             cancelAnimationFrame(animationId);
             goHome();
         }
+document.addEventListener('DOMContentLoaded', function() {
+    const robotContainer = document.querySelector('.robot-container');
+    
+    // 1. Ovozlar ro'yxati (Fayl nomlarini o'zingiznikiga to'g'irlang)
+    const sounds = [
+        "/static/robot_sekin.mp3",
+        "/static/robot_qitiq.mp3",
+        "/static/robot_ish.mp3",
+        "/static/robot_kulgi.mp3"
+    ];
+
+    const audioPlayer = new Audio(); // Bitta pleyer yaratamiz
+
+    robotContainer.addEventListener('click', function() {
+        
+        // 2. Tasodifiy bitta ovozni tanlash
+        const randomIndex = Math.floor(Math.random() * sounds.length);
+        const selectedSound = sounds[randomIndex];
+
+        // 3. Ovozni qo'yish
+        audioPlayer.src = selectedSound;
+        audioPlayer.currentTime = 0;
+        audioPlayer.play().catch(e => console.log("Ovoz xatosi:", e));
+
+        // 4. Animatsiya (Bosganda kichrayib-kattarishi)
+        this.style.transform = "scale(0.8) rotate(-5deg)"; // Sal qiyshayib kichrayadi
+        setTimeout(() => {
+            this.style.transform = "scale(1) rotate(0deg)";
+        }, 150);
+    });
+});
